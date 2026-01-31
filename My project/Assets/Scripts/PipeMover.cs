@@ -9,6 +9,10 @@ public class PipeMover : MonoBehaviour
 
     void Update()
     {
+        // Stop moving if game is over
+        if (GameController.Instance != null && GameController.Instance.isGameOver)
+            return;
+
         // Move left
         transform.position += Vector3.left * moveSpeed * Time.deltaTime;
 
@@ -18,4 +22,14 @@ public class PipeMover : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        // If pipe touches the player after spawn, destroy itself
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
+

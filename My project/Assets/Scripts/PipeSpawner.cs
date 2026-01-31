@@ -14,6 +14,9 @@ public class PipeSpawner : MonoBehaviour
 
     void Update()
     {
+        if (GameController.Instance != null && GameController.Instance.isGameOver)
+            return;
+
         timer += Time.deltaTime;
         if (timer >= spawnRate)
         {

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Bird : MonoBehaviour
 {
-
     public float flapForce = 5f;
     public AudioClip flapSound;
     public AudioClip hitSound;
@@ -13,14 +12,12 @@ public class Bird : MonoBehaviour
     private AudioSource audioSource;
     private bool isAlive = true;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!isAlive) return;
@@ -38,8 +35,7 @@ public class Bird : MonoBehaviour
         rb.velocity = Vector2.zero;
         rb.AddForce(Vector3.up * flapForce, ForceMode2D.Impulse);
 
-        if (audioSource != null && flapSound != null)
-            audioSource.PlayOneShot(flapSound);
+        audioSource.PlayOneShot(flapSound);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -50,8 +46,7 @@ public class Bird : MonoBehaviour
         {
             isAlive = false;
 
-            if (audioSource != null && hitSound != null)
-                audioSource.PlayOneShot(hitSound);
+            audioSource.PlayOneShot(hitSound);
 
             Debug.Log("Game Over! Hit a pipe.");
 

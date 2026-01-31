@@ -12,13 +12,8 @@ public class PipeScoreTrigger : MonoBehaviour
         {
             GameController.Instance.AddScore();
 
-            // Play score sound
-            if (collision.GetComponent<AudioSource>() != null && scoreSound != null)
-            {
-                collision.GetComponent<AudioSource>().PlayOneShot(scoreSound);
-            }
-
-            // Destroy the trigger so it can't score twice
+            collision.GetComponent<AudioSource>().PlayOneShot(scoreSound);
+            
             Destroy(gameObject);
         }
     }

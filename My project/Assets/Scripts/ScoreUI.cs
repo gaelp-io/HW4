@@ -7,8 +7,8 @@ public class ScoreUI : MonoBehaviour
 
     void Start()
     {
-            GameController.Instance.OnScoreChanged += UpdateScore;
-            UpdateScore(GameController.Instance.score);
+        GameController.Instance.OnScoreChanged += UpdateScore;
+        UpdateScore(GameController.Instance.score);
     }
 
     void OnDestroy()
